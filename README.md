@@ -4,7 +4,7 @@ This is a command-line application to classify images using one of the pre-train
 
 # Example
 
-In this example I will use the dogs and cats breeds dataset from [this kagle competition](https://www.kaggle.com/zippyz/cats-and-dogs-breeds-classification-oxford-dataset/data). First I arranged the images to have one folder for each class, and a train, a test and a validation folder with 60%, 20% and 20% of the images respectively. Then I use the `train.py` code, providing the path of the images `catdog/`, the number of epochs to train `-e 5`, and a name to save a checkpoint once the training finishes `-sd chechpoin.pth`. The process took around 4 hours on my computer, but you can use a GPU using the `--gpu` flag. See `python train.py -h` for other options.
+In this example I will use the dogs and cats breeds dataset from [this kagle competition](https://www.kaggle.com/zippyz/cats-and-dogs-breeds-classification-oxford-dataset/data). First I arranged the images to have one folder for each class, and I splited these folders into train, test, and a validation folders with 60%, 20% and 20% of the images respectively. Then I used the `train.py` code, providing the path of the folder where I put the images`catdog/`, the number of epochs to train `-e 5`, and a name to save a checkpoint once the training finishes `-sd chechpoin.pth`. The process took around 4 hours on my computer with a cpu, but you can use a GPU using the `--gpu` flag. See `python train.py -h` for other options.
 
 ``` console
 python train.py  catdogs/ -e 5 -sd checkpoint.pth
@@ -27,7 +27,7 @@ As you can see, the train loss, the validation loss, and the validation accuracy
 
 ![](Images/test/pug/pug_81.jpg)
 
-To make a prediction I just provide the path to the image to predict in the test directory,  and the path of the checkpoint. The class of the image is successfully predicted with a top probability of 80%:
+To make a prediction I just provide the path of the image to predict,  and the path of the checkpoint. The class of the image is successfully predicted with a top probability of 80%:
 
 ``` console
 winpty python predict.py  catdogs/test/pug/pug_81.jpg  checkpoint.pth
